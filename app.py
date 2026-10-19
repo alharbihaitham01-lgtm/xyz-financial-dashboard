@@ -108,8 +108,8 @@ elif page == 'نسب DuPont':
     heading('تفكيك العائد على حقوق الملكية · DuPont')
     st.markdown(f'<div class="fin-dupont"><strong>{percent(dp["margin"])}</strong><span>هامش الربح</span> × <strong>{num(dp["turnover"])}</strong><span>دوران الأصول</span> × <strong>{num(dp["multiplier"])}</strong><span>مضاعف الملكية</span> = <strong>{percent(dp["product"])}</strong></div>',unsafe_allow_html=True)
     note('صافي الربح/المبيعات × المبيعات/الأصول المستخدمة × الأصول المستخدمة/الملكية المستخدمة. تطبق قواعد المتوسطات نفسها في جميع الأجزاء. مضاعف أعلى لا يثبت تحسن التشغيل، وقد تتغير معه الفائدة والهامش.')
-    if p.get('opening_assets') is None or p.get('opening_equity') 
-    heading('DuPont الموسّع · من التشغيل إلى عائد المساهم')
+    if p.get('opening_assets') is None or p.get('opening_equity'):
+        heading('DuPont الموسّع · من التشغيل إلى عائد المساهم')
     ib=divide(d['ebt'],d['ebit']);tb=divide(d['net_income'],d['ebt'])
     if ib is not None and tb is not None and dp['product'] is not None:
         factors=[('هامش التشغيل',percent(rv['operating_margin']),'EBIT / Sales'),('معامل الفوائد',percent(ib),'EBT / EBIT'),('معامل الضرائب',percent(tb),'Net income / EBT'),('دوران الأصول',num(dp['turnover'])+' ×','Sales / Assets'),('مضاعف الملكية',num(dp['multiplier'],3)+' ×','Assets / Equity')]
