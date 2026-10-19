@@ -99,7 +99,7 @@ elif page=='القوائم وCommon Size':
         with b:
             heading('تركيب التمويل')
             if d['equity']>=0 and d['funding']>0:plot(donut(['خصوم متداولة','خصوم طويلة الأجل','ملكية'],[d['current_liabilities']/SCALE,d['long_term_liabilities']/SCALE,d['equity']/SCALE]),'balance-funding')
-    if statement=='cashflow'
+    if statement=='cashflow':
 
 elif page=='النسب وDuPont':
     dp=dupont(p)
