@@ -99,10 +99,11 @@ elif page=='القوائم وCommon Size':
         with b:
             heading('تركيب التمويل')
             if d['equity']>=0 and d['funding']>0:plot(donut(['خصوم متداولة','خصوم طويلة الأجل','ملكية'],[d['current_liabilities']/SCALE,d['long_term_liabilities']/SCALE,d['equity']/SCALE]),'balance-funding')
-    if statement=='cashflow':
+    if statement == 'cashflow':
+    pass
 
-elif page=='النسب وDuPont':
-    dp=dupont(p)
+elif page == 'نسب DuPont':
+    dp = dupont(p)
     kpis([('العائد على الأصول',percent(rv['roa']),'للفترة، وفق المتوسط أو رصيد النهاية'),('العائد على الملكية',percent(rv['roe']),'للفترة، وفق المتوسط أو رصيد النهاية'),('نسبة التداول',num(rv['current_ratio']),'مرة'),('تغطية الفائدة',num(rv['interest_cover']),'مرة؛ غير معرّفة عند انعدام الفائدة')])
     heading('تفكيك العائد على حقوق الملكية · DuPont')
     st.markdown(f'<div class="fin-dupont"><strong>{percent(dp["margin"])}</strong><span>هامش الربح</span> × <strong>{num(dp["turnover"])}</strong><span>دوران الأصول</span> × <strong>{num(dp["multiplier"])}</strong><span>مضاعف الملكية</span> = <strong>{percent(dp["product"])}</strong></div>',unsafe_allow_html=True)
